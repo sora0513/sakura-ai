@@ -1,0 +1,25 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "sakura": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Sakura AI Engine",
+      "options": {
+        "baseURL": "https://api.ai.sakura.ad.jp/v1",
+        "apiKey": "YOUR_API_KEY_HERE"
+      },
+      "models": {
+        "preview/Kimi-K2.6": {
+          "name": "Kimi-K2.6"
+        },
+        "Qwen3-Coder-480B-A35B-Instruct-FP8": {
+          "name": "Qwen3-Coder-480B"
+        },
+        "gpt-oss-120b": {
+          "name": "gpt-oss-120b"
+        }
+      }
+    }
+  },
+  "model": "sakura/preview/Kimi-K2.6"
+}

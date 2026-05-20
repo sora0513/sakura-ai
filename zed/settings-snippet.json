@@ -1,0 +1,34 @@
+{
+  "agent": {
+    "default_model": {
+      "provider": "Sakura AI",
+      "model": "preview/Kimi-K2.6",
+      "enable_thinking": false
+    },
+    "dock": "right"
+  },
+  "language_models": {
+    "openai_compatible": {
+      "Sakura AI": {
+        "api_url": "https://api.ai.sakura.ad.jp/v1",
+        "available_models": [
+          {
+            "name": "preview/Kimi-K2.6",
+            "display_name": "Kimi-K2.6 (Sakura)",
+            "max_tokens": 131072
+          },
+          {
+            "name": "Qwen3-Coder-480B-A35B-Instruct-FP8",
+            "display_name": "Qwen3-Coder-480B (Sakura)",
+            "max_tokens": 131072
+          },
+          {
+            "name": "gpt-oss-120b",
+            "display_name": "gpt-oss-120b (Sakura)",
+            "max_tokens": 131072
+          }
+        ]
+      }
+    }
+  }
+}
