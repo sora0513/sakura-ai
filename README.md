@@ -79,7 +79,7 @@ cd sakura-ai
 
 ## MCP Server
 
-Claude Code / Cursor から Sakura AI のモデルをツールとして呼び出せるサーバー。
+Claude Code から Sakura AI のモデルをツールとして呼び出せるサーバー。
 
 ### インストール
 
@@ -121,15 +121,6 @@ pwd
 ```
 
 設定後、Claude Code を再起動する。
-
-### Cursor への登録
-
-Cursor の設定 → `MCP` → `Add new MCP server` から以下を入力：
-
-- **Name**: `sakura-ai`
-- **Type**: `stdio`
-- **Command**: `node /絶対パス/sakura-ai/mcp-server/index.js`
-- **Environment**: `SAKURA_API_KEY=your_api_key_here`
 
 ### 利用できるツール
 
