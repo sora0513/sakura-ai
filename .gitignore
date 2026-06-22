@@ -1,2 +1,14 @@
 .env
 mcp-server/node_modules/
+
+# OS junk
+.DS_Store
+
+# AIツール個人設定（端末固有・共有しない）
+.claude/
+.agent/
+.ai/
+.gemini/
+AGENTS.md
+CLAUDE.md
+GEMINI.md

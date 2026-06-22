@@ -249,6 +249,55 @@ curl -s -o /dev/null -w "%{http_code}\n" \
 
 ---
 
+## Codex CLI 設定
+
+[Codex CLI](https://developers.openai.com/codex/) でモデルを Sakura AI（Kimi-K2.6 / Qwen3-Coder）に切り替える設定。`codex -p <名前>` でプロファイルを選ぶ。
+
+### 1. プロバイダを登録
+
+`~/.codex/config.toml` に `codex/config-snippet.toml` の内容を追記する。
+
+```toml
+[model_providers.sakura]
+name = "Sakura AI Engine"
+base_url = "https://api.ai.sakura.ad.jp/v1"
+env_key = "SAKURA_API_KEY"
+wire_api = "responses"
+```
+
+### 2. プロファイルを配置
+
+Codex 0.141+ は `codex -p <名前>` で `~/.codex/<名前>.config.toml` を base 設定に重ねる方式（v2）。スニペットをそのままコピーする。
+
+```bash
+cp codex/sakura.config.toml ~/.codex/sakura.config.toml   # Kimi-K2.6
+cp codex/qwen.config.toml   ~/.codex/qwen.config.toml     # Qwen3-Coder-480B
+```
+
+### 3. APIキーを環境変数に
+
+`env_key` で指定した環境変数にキーを入れる（実キーは config に書かない）。
+
+```bash
+export SAKURA_API_KEY='UUID:シークレット'   # :を含む完全なキーを1行で
+```
+
+### 4. 起動
+
+```bash
+codex -p sakura   # Kimi-K2.6（汎用・コードレビュー）
+codex -p qwen     # Qwen3-Coder-480B（コード生成）
+codex             # 何も付けなければ既定モデルのまま
+```
+
+### ハマりどころ
+
+- **`wire_api` は `"responses"` 必須。** Codex 0.141+ は `wire_api = "chat"` を廃止した。Sakura は `/responses` に対応しているので `"responses"` で動く。
+- **`config.toml` に `[profiles.x]` を書いてはいけない。** v2 では `-p` と衝突してエラーになる（`legacy profile ... cannot be used`）。プロファイルは必ず別ファイル `~/.codex/<名前>.config.toml` に置く。
+- **キーは `:` を含む。** 途中で切らず全体を入れる（Zedセクションの注意と同じ）。
+
+---
+
 ## 問題が起きたら
 
 動かない・設定がうまくいかない場合は [Issue](../../issues) で報告してください。

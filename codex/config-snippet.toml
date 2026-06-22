@@ -1,0 +1,7 @@
+# ~/.codex/config.toml にこのブロックを追記する（プロバイダ定義）
+# キーは環境変数 SAKURA_API_KEY を参照（実キーはここに書かない）
+[model_providers.sakura]
+name = "Sakura AI Engine"
+base_url = "https://api.ai.sakura.ad.jp/v1"
+env_key = "SAKURA_API_KEY"
+wire_api = "responses"   # Codex 0.141+ は "chat" 廃止。Sakuraは /responses 対応済

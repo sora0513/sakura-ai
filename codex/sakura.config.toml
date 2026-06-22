@@ -1,0 +1,3 @@
+# ~/.codex/sakura.config.toml に配置 → `codex -p sakura` で Kimi-K2.6
+model = "preview/Kimi-K2.6"
+model_provider = "sakura"
